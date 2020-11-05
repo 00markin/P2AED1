@@ -9,7 +9,7 @@ class Produto{
 	public int qtd;
 	public double prc;
 
-	public void menuProdutos(List Prds, Carrinho cart){
+	public void menuProdutos(List<Produto> Prds, Carrinho cart){
 		int op = 0;
     	while(op!= 4){
     		Console.WriteLine ("Selecione a opção desejada escrevendo apenas o número:");
@@ -45,7 +45,7 @@ class Produto{
 		}
 	}
 
-	public List cadastrarProduto(List Prds) {
+	public List<Produto> cadastrarProduto(List<Produto> Prds) {
     	Produto prd = new Produto();
 	    Console.WriteLine ("Qual a descrição do produto?");
 	    prd.nome = Console.ReadLine();
@@ -57,13 +57,13 @@ class Produto{
 	    return Prds;
   	}
 
-  	public void listarProdutos(List Prds){
+  	public void listarProdutos(List<Produto> Prds){
   		if(File.Exists("Estoque.bin")){
 	    	string serializationFile = "Estoque.bin";
 	    	using (Stream stream = File.Open(serializationFile, FileMode.Open))
 	        {
 	            var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-	            List<Produto>  Prds = (List<Produto>)bformatter.Deserialize(stream);
+	            Prds = (List<Produto>)bformatter.Deserialize(stream);
 	        }
 	        Console.WriteLine ("-------------------------------------");
 	        int i = 0;
@@ -78,7 +78,7 @@ class Produto{
     	}
   	}
 
-  	public void gravarEstoque(List Prds){
+  	public void gravarEstoque(List<Produto> Prds){
   		string serializationFile = "Estoque.bin";
     	using (Stream stream = File.Open(serializationFile, FileMode.Create))
     	{

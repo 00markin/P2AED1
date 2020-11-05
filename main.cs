@@ -20,7 +20,7 @@ class MainClass {
     	using (Stream stream = File.Open(serializationFile, FileMode.Open))
         {
             var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-            List<Cliente>  Clts = (List<Cliente>)bformatter.Deserialize(stream);
+            Clts = (List<Cliente>)bformatter.Deserialize(stream);
         }
     }
     if(File.Exists("Estoque.bin")){
@@ -28,7 +28,7 @@ class MainClass {
     	using (Stream stream = File.Open(serializationFile, FileMode.Open))
         {
             var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-            List<Produto>  Prds = (List<Produto>)bformatter.Deserialize(stream);
+            Prds = (List<Produto>)bformatter.Deserialize(stream);
         }
     }
     Console.WriteLine ("Bem vindo ao seu M&MSuperMercado!");

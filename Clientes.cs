@@ -11,7 +11,7 @@ class Cliente{
   public string cpf;
   public string endereco;
 
-  public void menuClientes(List Clts){
+  public void menuClientes(List<Cliente>  Clts){
     int op = 0;
     while(op!= 3){
       Console.WriteLine ("Selecione a opção desejada escrevendo apenas o número:");
@@ -43,7 +43,7 @@ class Cliente{
     }
   }
 
-  public List cadastrarCliente(List Clts) {
+  public List<Cliente>  cadastrarCliente(List<Cliente>  Clts) {
     Cliente clt = new Cliente();
     Console.WriteLine ("Qual seu nome?");
     clt.nome = Console.ReadLine();
@@ -58,7 +58,7 @@ class Cliente{
   }
 
 
-  public List removerCliente(List Clts) {
+  public List<Cliente>  removerCliente(List<Cliente>  Clts) {
     string cpfremove;
     bool remove = false;
     Console.WriteLine("Qual o CPF do cliente a ser removido?");
@@ -80,7 +80,7 @@ class Cliente{
   }
 
 
-  public void gravarClientes(List Clts){
+  public void gravarClientes(List<Cliente>  Clts){
     string serializationFile = "Clientes.bin";
     using (Stream stream = File.Open(serializationFile, FileMode.Create))
     {

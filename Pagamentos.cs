@@ -8,7 +8,7 @@ class Pagamento{
 	public bool pago = false;
 	public double saldo = 0;
 
-	public Carrinho menuPagamento(Pagamento pg, Carrinho cart, List Prds, Produto prd){
+	public Carrinho menuPagamento(Pagamento pg, Carrinho cart, List<Produto> Prds, Produto prd){
 		int op = 0;
 		Console.WriteLine ("Saldo atual: R$" + pg.saldo);
 		while(op!= 4){
@@ -57,7 +57,7 @@ class Pagamento{
 		return pg;
 	}
 
-	public Pagamento finalizarPg(Pagamento pg, Carrinho cart, List Prds, Produto prd){
+	public Pagamento finalizarPg(Pagamento pg, Carrinho cart, List<Produto> Prds, Produto prd){
 		pg.total = 0;
 		int[] quanti = cart.qtd.ToArray();
         Test(quanti);

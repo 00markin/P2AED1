@@ -9,7 +9,7 @@ class Carrinho{
 	public List<int> indexA = new List<int>();
 
 
-	public Carrinho menuCarrinho(List Prds, Carrinho cart){
+	public Carrinho menuCarrinho(List<Produto> Prds, Carrinho cart){
 		int op = 0;
     	Console.WriteLine ("   _");
 		Console.WriteLine ("    \\________");
@@ -47,7 +47,7 @@ class Carrinho{
 	}
   	
 
-  	public Carrinho addCarrinho(List Prds, Carrinho cart){
+  	public Carrinho addCarrinho(List<Produto> Prdss, Carrinho cart){
   		int prodAdd;
   		int qtdAdd;
   		prd.listarProdutos(Prds);
@@ -55,13 +55,13 @@ class Carrinho{
   		prodAdd = int.Parse(Console.ReadLine());
   		Console.WriteLine ("Digite a quantidade");
   		qtdAdd = int.Parse(Console.ReadLine());
-  		while(qtdAdd > Prds[proAdd]prd.qtd){
+  		while(qtdAdd > Prds[proAdd].qtd){
   			Console.WriteLine ("Quantidade inviável, digite nova quantidade");
   			qtdAdd = int.Parse(Console.ReadLine());
   		}
-  		cart.nome.Add(Prds[proAdd]prd.desc);
+  		cart.nome.Add(Prds[proAdd].desc);
   		cart.qtd.Add(qtdAdd);
-  		cart.prc.Add(Prds[proAdd]prd.prc);
+  		cart.prc.Add(Prds[proAdd].prc);
   		cart.indexA.Add(proAdd);
 
   		return cart;
