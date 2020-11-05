@@ -9,7 +9,7 @@ class Carrinho{
 	public List<int> indexA = new List<int>();
 
 
-	public Carrinho menuCarrinho(List<Produto> Prds, Carrinho cart){
+	public Carrinho menuCarrinho(List<Produto> Prds, Carrinho cart, Produto prd){
 		int op = 0;
     	Console.WriteLine ("   _");
 		Console.WriteLine ("    \\________");
@@ -28,7 +28,7 @@ class Carrinho{
 		    switch(op){
 		      case 1:
 		      Console.Clear();
-		      cart = addCarrinho(Prds, cart);
+		      cart = addCarrinho(Prds, cart, prd);
 		      break;
 		      case 2:
 		      Console.Clear();
@@ -47,7 +47,7 @@ class Carrinho{
 	}
   	
 
-  	public Carrinho addCarrinho(List<Produto> Prdss, Carrinho cart){
+  	public Carrinho addCarrinho(List<Produto> Prds, Carrinho cart, Produto prd){
   		int prodAdd;
   		int qtdAdd;
   		prd.listarProdutos(Prds);
@@ -55,14 +55,14 @@ class Carrinho{
   		prodAdd = int.Parse(Console.ReadLine());
   		Console.WriteLine ("Digite a quantidade");
   		qtdAdd = int.Parse(Console.ReadLine());
-  		while(qtdAdd > Prds[proAdd].qtd){
+  		while(qtdAdd > Prds[prodAdd].qtd){
   			Console.WriteLine ("Quantidade inviável, digite nova quantidade");
   			qtdAdd = int.Parse(Console.ReadLine());
   		}
-  		cart.nome.Add(Prds[proAdd].desc);
+  		cart.nome.Add(Prds[prodAdd].desc);
   		cart.qtd.Add(qtdAdd);
-  		cart.prc.Add(Prds[proAdd].prc);
-  		cart.indexA.Add(proAdd);
+  		cart.prc.Add(Prds[prodAdd].prc);
+  		cart.indexA.Add(prodAdd);
 
   		return cart;
   	}
@@ -79,9 +79,9 @@ class Carrinho{
         Console.WriteLine ("-------------------------------------");
         Console.WriteLine ("Digite o número anterior ao nome do produto para retirá-lo do seu carrinho");
   		prodRemov = int.Parse(Console.ReadLine());
-  		cart.nome.Remove(prodRemov);
-  		cart.qtd.Remove(prodRemov);
-  		cart.prc.Remove(prodRemov);
+  		cart.nome.RemoveAt(prodRemov);
+  		cart.qtd.RemoveAt(prodRemov);
+  		cart.prc.RemoveAt(prodRemov);
 
   		return cart;
   	}

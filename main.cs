@@ -7,9 +7,9 @@ using System.Runtime.Serialization.Formatters.Binary;
 class MainClass {
   public static void Main (string[] args) {
     int op = 0;
-    List<Cliente> Clts = new list<Cliente>();
+    List<Cliente> Clts = new List<Cliente>();
     Cliente clt = new Cliente();
-    List<Produto> Prds = new list<Produto>();
+    List<Produto> Prds = new List<Produto>();
     Produto prd = new Produto();
     Carrinho cart = new Carrinho();
     Pagamento pg = new Pagamento();
@@ -50,11 +50,11 @@ class MainClass {
         break;
         case 2:
         Console.Clear();
-       	prd.menuProdutos(Prds, cart);
+       	prd.menuProdutos(Prds, cart, prd);
         break;
         case 3:
         Console.Clear();
-        cart = cart.menuCarrinho(Prds, cart);
+        cart = cart.menuCarrinho(Prds, cart, prd);
         break;
         case 4:
         Console.Clear();

@@ -53,7 +53,7 @@ class Cliente{
     clt.cpf = Console.ReadLine();
     Console.WriteLine ("Qual seu endereço?");
     clt.nome = Console.ReadLine();
-    Clts.add(clt);
+    Clts.Add(clt);
     return Clts;
   }
 
@@ -63,10 +63,10 @@ class Cliente{
     bool remove = false;
     Console.WriteLine("Qual o CPF do cliente a ser removido?");
     cpfremove = Console.ReadLine();
-    foreach(Cliente Clt in Clts)
+    for(int i = 0; i < Clts.Count; i++)
      {
-      if(Clt.cpf == cpfremove){
-        Clts.Remove(clt);
+      if(Clts[i].cpf == cpfremove){
+        Clts.RemoveAt(i);
         remove = true;
       }
      }
@@ -85,7 +85,7 @@ class Cliente{
     using (Stream stream = File.Open(serializationFile, FileMode.Create))
     {
       var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-      bformatter.Serialize(stream, CltsList);
+      bformatter.Serialize(stream, Clts);
     }
   }
 

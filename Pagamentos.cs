@@ -23,7 +23,7 @@ class Pagamento{
 		    switch(op){
 		      case 1:
 		      Console.Clear();
-		      pg = addMoney(pg);
+		      pg = addSaldo(pg);
 		      break;
 		      case 2:
 		      Console.Clear();
@@ -60,18 +60,15 @@ class Pagamento{
 	public Pagamento finalizarPg(Pagamento pg, Carrinho cart, List<Produto> Prds, Produto prd){
 		pg.total = 0;
 		int[] quanti = cart.qtd.ToArray();
-        Test(quanti);
         double[] prec = cart.prc.ToArray();
-        Test(prec);
         string[] descricao = cart.nome.ToArray();
-        Test(descricao);
         for (int i = 0; i < descricao.Length; i++){
-        	double aux = double.Parse(quanti[i]);
+        	double aux = double.Parse(quanti[i].ToString());
         	pg.total += (prec[i] * aux);
         }
         if(pg.saldo >= pg.total){
         	for (int i = 0; i < descricao.Length; i++){
-        		double aux = double.Parse(quanti[i]);
+        		double aux = double.Parse(quanti[i].ToString());
         		aux = (prec[i] * aux);
         		gravarPagamento(descricao[i], quanti[i], aux);
         	}

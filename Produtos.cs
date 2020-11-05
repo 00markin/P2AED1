@@ -9,7 +9,7 @@ class Produto{
 	public int qtd;
 	public double prc;
 
-	public void menuProdutos(List<Produto> Prds, Carrinho cart){
+	public void menuProdutos(List<Produto> Prds, Carrinho cart, Produto prd){
 		int op = 0;
     	while(op!= 4){
     		Console.WriteLine ("Selecione a opção desejada escrevendo apenas o número:");
@@ -23,7 +23,7 @@ class Produto{
 		    switch(op){
 		      case 1:
 		      Console.Clear();
-		      Prds = cadastrarProdutos(Prds);
+		      Prds = cadastrarProduto(Prds);
 		      gravarEstoque(Prds);
 		      break;
 		      case 2:
@@ -32,7 +32,7 @@ class Produto{
 		      break;
 		      case 3:
 		      Console.Clear();
-		      cart = cart.addCarrinho(Prds, cart);
+		      cart = cart.addCarrinho(Prds, cart, prd);
 		      break;
 		      case 4:
     		  Console.Clear();
@@ -48,12 +48,12 @@ class Produto{
 	public List<Produto> cadastrarProduto(List<Produto> Prds) {
     	Produto prd = new Produto();
 	    Console.WriteLine ("Qual a descrição do produto?");
-	    prd.nome = Console.ReadLine();
+	    prd.desc = Console.ReadLine();
 	    Console.WriteLine ("Quantos produtos estão disponíveis?");
 	    prd.qtd = int.Parse(Console.ReadLine());
 	    Console.WriteLine ("Qual o valor do produto?");
 	    prd.prc = double.Parse(Console.ReadLine());
-	    Prds.add(prd);
+	    Prds.Add(prd);
 	    return Prds;
   	}
 
@@ -67,8 +67,8 @@ class Produto{
 	        }
 	        Console.WriteLine ("-------------------------------------");
 	        int i = 0;
-        	foreach(Protuduto prd in Prds){
-        		Console.WriteLine (i +"-" + prd.nome + "    " + prd.qtd + "    R$"+prd.prc);
+        	foreach(Produto prd in Prds){
+        		Console.WriteLine (i +"-" + prd.desc + "    " + prd.qtd + "    R$"+prd.prc);
         		i++;
         	}
         	Console.WriteLine ("-------------------------------------");
@@ -83,7 +83,7 @@ class Produto{
     	using (Stream stream = File.Open(serializationFile, FileMode.Create))
     	{
     	  var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-    	  bformatter.Serialize(stream, PrdsList);
+    	  bformatter.Serialize(stream, Prds);
     	}
   	}
 }
